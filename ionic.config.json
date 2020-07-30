@@ -1,0 +1,7 @@
+{
+  "name": "ionic-test-vue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
