@@ -95,7 +95,7 @@ export default defineComponent({
       console.log({ value });
     }
 
-    function onSubmit(value: MouseEvent) {
+    async function onSubmit(value: MouseEvent) {
       console.log({ value });
 
       state.form.append('firstName', state.user.firstName);
@@ -103,10 +103,15 @@ export default defineComponent({
       state.form.append('birthday', state.user.birthday);
       state.form.append('city', state.user.city);
 
-      store.dispatch({
+      await store.dispatch({
         type: `${MODULES.Users}/${ACTIONS.Users.create}`,
         form: state.form,
       });
+
+      state.form.delete('firstName');
+      state.form.delete('lastName');
+      state.form.delete('birthday');
+      state.form.delete('city');
     }
 
     function onFileUpload(files: FileList) {
